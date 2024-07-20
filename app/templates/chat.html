@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat app</title>
+</head>
+<body>
+    <div id="messages" style="background-color: gray; color: white;">
+        <ul>
+            {% for chat in chat_messages reversed %}
+                <li>
+                    <b>{{chat.author}}</b>: <i>{{chat.body}}</i>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div id="form">
+        <form action="{% url 'home' %}" id="chat_message_form" method="post">
+            {% csrf_token %}
+            {{form}}
+        </form>
+    </div>
+</body>
+</html>
